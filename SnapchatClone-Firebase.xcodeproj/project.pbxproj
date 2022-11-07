@@ -11,6 +11,9 @@
 		D42437042915B6BC00A6055D /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42437032915B6BC00A6055D /* UploadVC.swift */; };
 		D42437062915B6C700A6055D /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42437052915B6C700A6055D /* SettingsVC.swift */; };
 		D424370A2915CDFD00A6055D /* SnapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42437092915CDFD00A6055D /* SnapVC.swift */; };
+		D473EDFD29186F540000234E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473EDFC29186F540000234E /* File.swift */; };
+		D473EE0329198B510000234E /* CellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473EE0229198B510000234E /* CellVC.swift */; };
+		D473EE052919960A0000234E /* Snap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D473EE042919960A0000234E /* Snap.swift */; };
 		D4E84A0B2915A2F90079FBE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84A0A2915A2F90079FBE7 /* AppDelegate.swift */; };
 		D4E84A0D2915A2F90079FBE7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84A0C2915A2F90079FBE7 /* SceneDelegate.swift */; };
 		D4E84A0F2915A2F90079FBE7 /* SıgnInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E84A0E2915A2F90079FBE7 /* SıgnInVC.swift */; };
@@ -29,6 +32,9 @@
 		D42437032915B6BC00A6055D /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		D42437052915B6C700A6055D /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		D42437092915CDFD00A6055D /* SnapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapVC.swift; sourceTree = "<group>"; };
+		D473EDFC29186F540000234E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		D473EE0229198B510000234E /* CellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellVC.swift; sourceTree = "<group>"; };
+		D473EE042919960A0000234E /* Snap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snap.swift; sourceTree = "<group>"; };
 		D4E84A072915A2F90079FBE7 /* SnapchatClone-Firebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SnapchatClone-Firebase.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4E84A0A2915A2F90079FBE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4E84A0C2915A2F90079FBE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +99,16 @@
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
+		D473EDFB29186F460000234E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D473EDFC29186F540000234E /* File.swift */,
+				D473EE0229198B510000234E /* CellVC.swift */,
+				D473EE042919960A0000234E /* Snap.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D4E849FE2915A2F90079FBE7 = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +130,7 @@
 		D4E84A092915A2F90079FBE7 /* SnapchatClone-Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				D473EDFB29186F460000234E /* Model */,
 				D42437072915B6CC00A6055D /* View Controllers */,
 				D42437082915B70300A6055D /* Support Files */,
 				D4E84A182915A2F90079FBE7 /* Info.plist */,
@@ -239,10 +256,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4E84A0F2915A2F90079FBE7 /* SıgnInVC.swift in Sources */,
+				D473EE052919960A0000234E /* Snap.swift in Sources */,
 				D4E84A0B2915A2F90079FBE7 /* AppDelegate.swift in Sources */,
 				D42437022915B6AD00A6055D /* HomePageVC.swift in Sources */,
 				D42437042915B6BC00A6055D /* UploadVC.swift in Sources */,
 				D424370A2915CDFD00A6055D /* SnapVC.swift in Sources */,
+				D473EE0329198B510000234E /* CellVC.swift in Sources */,
+				D473EDFD29186F540000234E /* File.swift in Sources */,
 				D4E84A0D2915A2F90079FBE7 /* SceneDelegate.swift in Sources */,
 				D42437062915B6C700A6055D /* SettingsVC.swift in Sources */,
 			);
