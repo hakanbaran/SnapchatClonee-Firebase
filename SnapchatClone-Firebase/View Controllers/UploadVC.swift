@@ -34,7 +34,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
-        present(picker, animated: true)
+        self.present(picker, animated: true)
         
     }
     
@@ -44,8 +44,10 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
 
+    
     @IBAction func uploadClicked(_ sender: Any) {
         
+     
         let storage = Storage.storage()
         let storageReferance = storage.reference()
         
@@ -53,9 +55,9 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         let mediaFolder = storageReferance.child("Media")
         
         if let data = uploadImage.image?.jpegData(compressionQuality: 0.5) {
-            let uuidImage = UUID().uuidString
+            let uuid = UUID().uuidString
             
-            let imageReferance = mediaFolder.child("\(uuidImage).jpg")
+            let imageReferance = mediaFolder.child("\(uuid).jpg")
             
             imageReferance.putData(data) { metaData, error1 in
                 if error1 != nil {
@@ -65,7 +67,6 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     imageReferance.downloadURL { url, error2 in
                         if error2 == nil {
                             let imageURL = url?.absoluteString
-                            
                             
                             let fireStore = Firestore.firestore()
                             
@@ -92,7 +93,9 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                             }
                                         }
                                     } else {
-                                        let snapDictionary = ["imageUrlArray" : [imageURL!], "snapOwner": UserSingleton.sharedUserInfo.username, "Date": FieldValue.serverTimestamp()] as [String: Any]
+                                        let snapDictionary = ["imageUrlArray" : [imageURL!], "snapOwner": UserSingleton.sharedUserInfo.username, "Date": FieldValue.serverTimestamp()] as [ String: Any]
+                                        
+                                        print("Hakan")
                                         
                                         fireStore.collection("Snaps").addDocument(data: snapDictionary) { error3 in
                                             if error3 != nil {
@@ -109,23 +112,18 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                 }
                             }
                             
-                            
-                            
-                            
-                            
-                            
-                            
                         }
                     }
-                    
-                    
-                    
                     
                 }
             }
         }
         
     }
+     
+     
+    
+    
     
     func makeAlert(titleInput : String, messageInput: String) {
         

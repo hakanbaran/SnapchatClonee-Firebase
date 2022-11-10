@@ -9,13 +9,16 @@ import UIKit
 
 class CellVC: UITableViewCell {
 
-    @IBOutlet weak var snapUsernameLabel: UILabel!
+    //@IBOutlet weak var snapUsernameLabel: UILabel!
     @IBOutlet weak var snapImageView: UIImageView!
+    @IBOutlet weak var snapUsernameLAbel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

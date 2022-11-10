@@ -17,11 +17,19 @@ class SıgnInVC: UIViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
+    @IBOutlet weak var signInFunc: UIButton!
+    @IBOutlet weak var signUpFunc: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
     }
+    
+    
+    
     
     
     @IBAction func signInClicked(_ sender: Any) {
@@ -37,16 +45,9 @@ class SıgnInVC: UIViewController {
                     
                 }
             }
-            
-            
         } else {
-            
             self.makeAlert(titleInput: "ERROR!", messageInput: "Email/Password ???")
-            
         }
-        
-        
-        
     }
     
     @IBAction func signUpClicked(_ sender: Any) {
@@ -62,7 +63,7 @@ class SıgnInVC: UIViewController {
                     
                     let fireStore = Firestore.firestore()
                     
-                    let userDictionary = ["email:" : self.emailText.text!, "username": self.usernameText.text!] as [String : Any]
+                    let userDictionary = ["email" : self.emailText.text!, "username": self.usernameText.text!] as [String : Any]
                     
                     fireStore.collection("userInfo").addDocument(data: userDictionary) { error2 in
                         if error2 != nil {
@@ -87,6 +88,28 @@ class SıgnInVC: UIViewController {
         let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
         alert.addAction(okButton)
         self.present(alert, animated: true)
+        
+    }
+    
+    @IBAction func segmentedControllerClicked(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            
+            
+            /*
+            usernameText.isHidden = true
+            signInFunc.isHidden = true
+            signUpFunc.isHidden = false
+             */
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            /*
+            usernameText.isHidden = false
+            signUpFunc.isHidden = true
+            signInFunc.isHidden = false
+             */
+        }
+        
         
     }
     
