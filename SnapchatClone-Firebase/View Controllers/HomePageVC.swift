@@ -62,9 +62,6 @@ class HomePageVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                                         if different >= 24 {
                                             self.fireStoreDatabase.collection("Snaps").document(documentId).delete()
                                         } else {
-                                            // TimeLeft ->  SnapVC
-                                            
-                                            
                                             
                                             let snap = Snap(username: username, imageUrlArray: ImageUrlArray, date: date.dateValue(), timeDifference: 24 - different)
                                             self.snapArray.append(snap)

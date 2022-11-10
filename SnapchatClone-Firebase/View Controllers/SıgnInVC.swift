@@ -17,20 +17,79 @@ class SıgnInVC: UIViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
-    @IBOutlet weak var signInFunc: UIButton!
-    @IBOutlet weak var signUpFunc: UIButton!
+    @IBOutlet weak var signInClicked: UIButton!
+    @IBOutlet weak var signUpClicked: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
+        usernameText.isHidden = true
+        
+        signUpClicked.isHidden = true
         
     }
     
+    @IBAction func segmentedControllerClicked(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            
+            usernameText.isHidden = true
+            
+            signUpClicked.isHidden = true
+            signInClicked.isHidden = false
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            
+            usernameText.isHidden = false
+            
+            signUpClicked.isHidden = false
+            signInClicked.isHidden = true
+            
+        }
+    }
+    
+    @IBAction func signInClicked(_ sender: Any) {
+        
+        if emailText.text != "" && passwordText.text != "" {
+            Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!) { result1, error3 in
+                if error3 != nil {
+                    self.makeAlert(titleInput: "ERROR!", messageInput: error3?.localizedDescription ?? "ERROR!!")
+                } else {
+                    self.performSegue(withIdentifier: "toHomepageVC", sender: nil)
+                }
+            }
+        } else {
+            self.makeAlert(titleInput: "ERROR!", messageInput: "Email/Password ???")
+        }
+    }
+    
+    @IBAction func signUpClicked(_ sender: Any) {
+        
+        if usernameText.text != "" && emailText.text != "" && passwordText.text != "" {
+            Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!) { auth, error1 in
+                if error1 != nil {
+                    self.makeAlert(titleInput: "ERROR!!", messageInput: error1?.localizedDescription ?? "ERROR!!!")
+                } else {
+                    let fireStore = Firestore.firestore()
+                    let userDictionary = ["email" : self.emailText.text!, "username": self.usernameText.text!] as [String : Any]
+                    fireStore.collection("userInfo").addDocument(data: userDictionary) { error2 in
+                        if error2 != nil {
+                            self.makeAlert(titleInput: "ERROR!!!", messageInput: "ERROR!!!")
+                        }
+                    }
+                    self.performSegue(withIdentifier: "toHomepageVC", sender: nil)
+                }
+            }
+        } else {
+            self.makeAlert(titleInput: "ERROR!!!!", messageInput: "Username/Email/Password ???")
+        }
+    }
     
     
-    
+    /*
     
     @IBAction func signInClicked(_ sender: Any) {
         
@@ -49,6 +108,8 @@ class SıgnInVC: UIViewController {
             self.makeAlert(titleInput: "ERROR!", messageInput: "Email/Password ???")
         }
     }
+     
+    
     
     @IBAction func signUpClicked(_ sender: Any) {
         
@@ -81,6 +142,8 @@ class SıgnInVC: UIViewController {
         }
         
     }
+     
+     */
     
     func makeAlert(titleInput : String, messageInput: String) {
         
@@ -91,27 +154,7 @@ class SıgnInVC: UIViewController {
         
     }
     
-    @IBAction func segmentedControllerClicked(_ sender: UISegmentedControl) {
-        
-        if sender.selectedSegmentIndex == 0 {
-            
-            
-            /*
-            usernameText.isHidden = true
-            signInFunc.isHidden = true
-            signUpFunc.isHidden = false
-             */
-            
-        } else if sender.selectedSegmentIndex == 1 {
-            /*
-            usernameText.isHidden = false
-            signUpFunc.isHidden = true
-            signInFunc.isHidden = false
-             */
-        }
-        
-        
-    }
+    
     
 }
 

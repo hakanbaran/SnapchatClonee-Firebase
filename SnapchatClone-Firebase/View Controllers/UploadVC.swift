@@ -16,6 +16,8 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var uploadImage: UIImageView!
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -120,6 +122,10 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
         
     }
+    
+    
+        
+    
      
      
     
