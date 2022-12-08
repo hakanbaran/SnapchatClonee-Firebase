@@ -30,7 +30,11 @@ class SıgnInVC: UIViewController {
         
         signUpClicked.isHidden = true
         
+        
+        
     }
+    
+    
     
     @IBAction func segmentedControllerClicked(_ sender: UISegmentedControl) {
         
